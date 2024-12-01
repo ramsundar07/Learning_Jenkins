@@ -14,7 +14,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t ramz/app .'
+                    sh 'docker build -t ramsundar07/app .'
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
                    sh 'docker login -u ramsundar07 -p ${dockerhubpwd}'
 
 }
-                   sh 'docker push ramz/app'
+                   sh 'docker push ramsundar07/app'
                 }
             }
         }
