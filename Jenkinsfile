@@ -24,10 +24,17 @@ pipeline {
                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
                    sh 'docker login -u ramsundar07 -p ${dockerhubpwd}'
 
-}
+                    }
                    sh 'docker push ramsundar07/app'
                 }
             }
         }
+        stage('Deploy to k8s'){
+                    steps{
+                        script{
+                            kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
+                        }
+                    }
+                }
     }
 }
