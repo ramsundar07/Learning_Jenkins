@@ -4,6 +4,10 @@ pipeline {
         maven 'maven_3_5_0'
         dockerTool 'docker'
     }
+    docker{
+    image 'bitnami/kubectl:latest'  // A container with kubectl installed
+                label 'linux'  // Make sure your agent is compatible
+    }
     stages{
         stage('Build Maven'){
             steps{
