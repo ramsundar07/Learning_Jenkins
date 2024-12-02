@@ -4,6 +4,9 @@ pipeline {
         maven 'maven_3_5_0'  // Your Maven tool configuration
         dockerTool 'docker'  // Docker tool configuration (if needed)
     }
+     environment {
+            PATH = "/usr/local/bin:/usr/bin:$PATH"  // Add the desired directories
+        }
     stages {
         stage('Build Maven') {
             steps {
